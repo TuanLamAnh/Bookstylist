@@ -1,0 +1,106 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.memberHeader {
+    margin: 40px 0;
+}
+.hoivien{
+    background-color: #ff401aa1;
+}
+
+.fvr-image {
+    background-image: url(../../source/img/fvr1.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 280px;
+    height: 200px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.fvr-image-1 {
+    background-image: url(../../source/img/fvr2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 280px;
+    height: 200px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.fvr-image-2 {
+    background-image: url(../../source/img/fvr3.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 280px;
+    height: 200px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.review {
+    color: #fff;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 5px;
+    padding: 5px;
+}
+
+.rate {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.unlike {
+    color: #FF421A;
+    border-radius: 20px;
+    border: #FF421A 1px solid;
+    /* padding: 5px */
+}
+
+.detailsssss {
+    cursor: pointer;
+    color: #FF421A;
+}
+
+.chitietbox {
+    background-color: #d3d3d3;
+    color: #000000;
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.passbtn {
+    width: 80px;
+    height: 40px;
+    background-color: #ff421a;
+    color: #fff;
+    float: right;
+    border-radius: 10px;
+}
+
+.yourRank span {
+    font-weight: bold;
+}
+
+.voucherMember {
+    font-weight: bold;
+}
+
+.pricePass {
+    border: 2px solid #fff;
+    box-sizing: border-box;
+    width: fit-content;
+    padding: 5px;
+    background-color: #f0efeb;
+    border-radius: 5px;
+}

@@ -1,0 +1,396 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    color: #ffffff !important;
+    width: 100%;
+    height: 50%;
+}
+
+.btn-login {
+    background-color: #FF421A;
+    color: #fff;
+    border-radius: 50px;
+    margin: 0 10px;
+}
+
+.btn-login:hover {
+    background-color: #ff8d76;
+}
+
+.btn-business {
+    border-radius: 50px;
+    border: 2px solid #FF421A;
+    color: #fff;
+}
+
+.btn-business:hover {
+    background-color: #FF421A;
+    color: #FFFFFF;
+}
+
+#form-search {
+    position: absolute;
+    top: 35%;
+    width: 40%;
+    left: 30%;
+    right: 30%;
+}
+
+#howto-input {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    margin: 0;
+    box-shadow: none;
+}
+
+#howto-input:hover {
+    border-color: #FF421A;
+}
+
+#howto-input:focus {
+    border-color: #FF421A;
+}
+
+#location-input {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin: 0;
+    box-shadow: none;
+}
+
+#location-input:hover {
+    border-color: #FF421A;
+}
+
+#location-input:focus {
+    border-color: #FF421A;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #FF421A;
+    box-shadow: 0px 2px 0px 0px #FF420C;
+}
+
+.bottom-section {
+    position: absolute;
+    bottom: 30%;
+}
+
+.video-container {
+    background: black;
+    z-index: -1;
+    height: 70%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#video-bg {
+    position: relative;
+    top: -50px;
+    opacity: 0.5;
+    object-position: center;
+    width: 100%;
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    padding: 20%;
+}
+
+#howto-2 {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    margin: 0;
+    background: none;
+}
+
+#location-2 {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin: 0;
+    background: none;
+}
+
+#form-search-2 {
+    position: absolute;
+    width: 30%;
+    left: 30%;
+    right: 30%;
+}
+
+
+/*Thiết lập Footer*/
+
+h2 {
+    font-size: 1.5em;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 100px;
+    background: #111;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+footer .container .noi-dung {
+    margin-right: 30px;
+}
+
+footer .container .noi-dung.about {
+    width: 40%;
+}
+
+footer .container .noi-dung.about h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+footer .container .noi-dung.about h2:before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FF421A;
+}
+
+footer .container .noi-dung.about p {
+    color: #999;
+}
+
+
+/*Thiết Lập Cho Thành Phần Icon Mạng Xã Hội*/
+
+.social-icon {
+    margin-top: 20px;
+    display: flex;
+}
+
+.social-icon li {
+    list-style: none;
+}
+
+.social-icon li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.social-icon li a:hover {
+    background: #FF421A;
+}
+
+.social-icon li a .fa {
+    color: #fff;
+    font-size: 20px;
+}
+
+.links h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.links h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.links h2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FF421A;
+}
+
+.links {
+    position: relative;
+    width: 25%;
+}
+
+.links ul li {
+    list-style: none;
+}
+
+.links ul li a {
+    color: #999;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.links ul li a:hover {
+    color: #fff;
+}
+
+.contact h2 {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.contact h2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #FF421A;
+}
+
+.contact {
+    width: calc(35% - 60px);
+    margin-right: 0 !important;
+}
+
+.contact .info {
+    position: relative;
+}
+
+.contact .info li {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.contact .info li span:nth-child(1) {
+    color: #fff;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.contact .info li span {
+    color: #999;
+}
+
+.contact .info li a {
+    color: #999;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 40px;
+    }
+    footer .container {
+        flex-direction: column;
+    }
+    footer .container .noi-dung {
+        margin-right: 0;
+        margin-bottom: 40px;
+    }
+    footer .container,
+    .noi-dung.about,
+    .links,
+    .contact {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 870px) {
+    .bottom-section {
+        display: none;
+    }
+    .video-container {
+        height: 50%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .section-form {
+        display: none;
+    }
+    .video-container {
+        height: 20%;
+    }
+    .topnav {
+        display: none;
+    }
+    #form-search-2 {
+        display: none;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .video-container {
+        height: 10%;
+    }
+}
+
+.input-search {
+    background: rgba(247, 247, 247, 0.5);
+    border: none;
+    border-radius: 20px;
+    height: 35px;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.input-search:active {
+    border: none;
+}
+
+.categoriz {
+    margin-right: 43px;
+}
+
+@media screen and (max-width: 700px) {
+    .zxcz {
+        text-align: center;
+    }
+    .btn-location {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width:1024) {
+    header {
+        margin-bottom: 30%;
+    }
+}
+
+@media screen and (max-width:1920px) {
+    header {
+        margin-bottom: 34%;
+    }
+}

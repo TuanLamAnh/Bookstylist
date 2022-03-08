@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hr {
+    height: 1px;
+    width: 80%;
+    background-color: #adb5bd;
+}
+
+.btn-book {
+    background-color: #FF421A;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    border: none;
+}
+
+.nameShopList {
+    font-size: 30px;
+    color: #ff421a;
+}
+
+.nameShopList:hover{
+    color: #ff421a;
+    opacity: 0.7;
+}
+
+.hr1 {
+    height: 1px;
+    background-color: #adb5bd;
+    margin: 25px;
+    width: 100%;
+}
+
+.infoListz {
+    margin-top: 25px;
+}
+
+.btn-outline-secondary {
+    border: 3px solid !important;
+    width: 100%;
+    border-color: #ff421a !important;
+    border-radius: 15px !important;
+    margin-bottom: 15px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #ff421a;
+}
+
+.item-list:hover{
+opacity: 0.7;
+}
+
+.ratingList {
+    background-color: rgba(17, 17, 17, 0.705);
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 23px;
+    pointer-events: none;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 0 6px;
+    line-height: 24px;
+    width: 124px;
+    height: 60px;
+}
+
+.ratingPointList {
+    color: white;
+    font-size: 30px;
+    line-height: 34px;
+    display: block;
+}
+
+.reviewCountList {
+    color: white;
+    font-size: 14px;
+    line-height: 16px;
+    word-wrap: break-word;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+@media screen and (max-width: 700px) {
+    .btn-outline {
+        margin-bottom: 30px;
+    }
+}

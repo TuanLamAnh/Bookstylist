@@ -1,0 +1,34 @@
+.mrv {
+    background-color: #ff401aa1;
+}
+
+.my-review__title {
+    margin: 40px 20px ;
+}
+
+
+.my-review__main {
+
+    background-color: rgba(146, 142, 139, 0.089);
+    padding: 30px 20px;
+    border-radius: 10px;
+    color: #000000;
+    height: 60vh;
+    margin: 40px 20px ;
+}
+
+.table-col__one {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #207EA6;
+}
+
+.table-col__six {
+    color: #FF421A;
+}
+
+.table-col__sixs {
+    color: #707070;
+}

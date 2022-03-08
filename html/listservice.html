@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style-sevice-page.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/App.css">
+    <link rel="stylesheet" href="../css/listshopT.css">
+    <script src="https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js"></script>
+    <link rel="stylesheet" href="../css/popup.css">
+
+
+
+</head>
+
+<style>
+    .owl-prev {
+        left: -30px;
+    }
+    
+    .owl-next {
+        right: -30px;
+    }
+    
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        top: 30%;
+    }
+    
+    .owl-prev span,
+    .owl-next span {
+        font-size: 60px;
+        color: #787878;
+    }
+    
+    .owl-theme .owl-nav [class*="owl-"]:hover {
+        background-color: transparent;
+    }
+</style>
+
+<body>
+    <header id="header">
+        <!-- The Service -->
+        <div class="modal fade" id="popup-howto">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <input id="model-input-howto" type="text" class="popup-howto form-control" placeholder="Bạn tìm dịch vụ gì?">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="service">
+                            <h5 class="modal-title">Dịch vụ phổ biến</h5>
+                            <br>
+                            <!--Lấy dữ liệu từ SQL nên hiệu chỉnh sau-->
+                            <div class="group-service">
+                                <label> 
+                                                            <input type="checkbox"  name="service" class="service"  style="display: none;">
+                                                            <span class="btn btn-service" for="">Cắt Tóc</span>
+                                                        </label>
+                                <label> 
+                                                            <input type="checkbox" name="service" class="service" style="display: none;">
+                                                            <span class="btn btn-service">Làm Nail</span>
+                                                        </label>
+                                <label> 
+                                                            <input type="checkbox" name="service" class="service" style="display: none;">
+                                                            <span class="btn btn-service">Duỗi Tóc</span>
+                                                        </label>
+                                <label> 
+                                                            <input type="checkbox" name="service" class="service" style="display: none;">
+                                                            <span class="btn btn-service">Uốn Tóc</span>
+                                                        </label>
+                                <!--có thể thêm-->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn" id="btn-search" onclick="searchHowto()" data-dismiss="modal">Tìm Kiếm</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- The Location -->
+        <div class="modal fade" id="popup-location">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <input id="model-input-howto" type="text" class="popup-howto form-control" placeholder="Địa điểm ?">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="service">
+                            <h5 class="modal-title">Vị trí</h5>
+
+                            <!--Lấy dữ liệu từ SQL nên hiệu chỉnh sau-->
+                            <div class="row justify-content-center">
+                                <select name="calc_shipping_provinces" required="" class="col-sm-4 btn" id="locations-choose">
+                                                        <option value="">Tỉnh / Thành phố</option>
+                                                      </select>
+                                <select name="calc_shipping_district" required="" class="col-sm-4 btn" id="locations-choose">
+                                                        <option value="">Quận / Huyện</option>
+                                                      </select>
+                                <input class="billing_address_1" name="" type="hidden" value="">
+                                <input class="billing_address_2" name="" type="hidden" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn" id="btn-search" onclick="searchLocation()" data-dismiss="modal">Tìm Kiếm</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container px-0">
+            <nav class=" row navbar px-3">
+                <div class=" col-lg-1 col-sm-1 navbar-brand logo">
+                    <a href="../html/index.html"><img src="../source/img/logo.png" style="width: 60px;"></a>
+                </div>
+
+                <div class="nav nav-pc">
+                    <div id="form-search-1" class="input-group form-inline col-lg-5 col-sm-7">
+                        <input id="howto-2" type="text" class=" form-control " placeholder=" Bạn muốn tìm kiếm gì?" data-toggle="modal" data-target="#popup-howto">
+
+
+                        <input id="location-2" type="text" class="form-control " placeholder="Địa điểm " data-toggle="modal" data-target="#popup-location">
+
+
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" id="ddMenu" data-toggle="dropdown"><span><img style="width: 25;height: 25px;" src="../source/img/emojione_flag-for-vietnam.png" alt=""></span>
+                               Việt Nam
+                            </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Việt Nam</a>
+                            <a class="dropdown-item" href="#">USA</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" id="ddMenu" data-toggle="dropdown"><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 18 18">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                              </svg></span>
+                               Profile
+                            </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="./userprofile/infor.html">Trang cá nhân </a>
+                            <a class="dropdown-item" href="./userprofile/schedule.html">Lịch book</a>
+                            <a class="dropdown-item" href="./userprofile/notification.html">Thông báo</a>
+                            <a class="dropdown-item" href="./login.html">Đăng xuất</a>
+                        </div>
+                    </div>
+                    <a class="btn btn-business" onclick="clickBtndoitac()">Đối tác</a>
+                </div>
+                <label for="nav-check" class="nav-mobile-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                          </svg>                      
+                    </label>
+                <input type="checkbox" name="" id="nav-check">
+                <label for="nav-check" class="nav-overlay"></label>
+                <div class="nav-mobile">
+                    <label for="nav-check" class="nav-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                          </svg>
+                        </label>
+                    <span class="avatar"> <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 18 18">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                          </svg>
+                          Profile  
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+                          </svg>
+                          </span>
+                    <input id="mbsearch" type="text" class="form-control" placeholder="Bạn đang tìm kiếm gì ?" data-toggle="modal" data-target="#popup-howto">
+                    <div class="modal fade" id="popup-howto">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <input id="model-input-howto" type="text" class="popup-howto form-control" placeholder="Bạn tìm dịch vụ gì?">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="service">
+                                        <h5 class="modal-title">Dịch vụ phổ biến</h5>
+                                        <br>
+                                        <!--Lấy dữ liệu từ SQL nên hiệu chỉnh sau-->
+                                        <div class="group-service">
+                                            <label> 
+                                                  <input type="checkbox"  name="service" class="service"  style="display: none;">
+                                                  <span class="btn btn-service" for="">Cắt Tóc</span>
+                                              </label>
+                                            <label> 
+                                                  <input type="checkbox" name="service" class="service" style="display: none;">
+                                                  <span class="btn btn-service">Làm Nail</span>
+                                              </label>
+                                            <label> 
+                                                  <input type="checkbox" name="service" class="service" style="display: none;">
+                                                  <span class="btn btn-service">Duỗi Tóc</span>
+                                              </label>
+                                            <label> 
+                                                  <input type="checkbox" name="service" class="service" style="display: none;">
+                                                  <span class="btn btn-service">Uốn Tóc</span>
+                                              </label>
+                                            <!--có thể thêm-->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" id="btn-search" onclick="searchHowto()" data-dismiss="modal">Tìm Kiếm</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-list px-2">
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Hair Salon</a>
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Babershop</a>
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Nail Salon</a>
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Beauty Salon</a>
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Massage</a>
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Makeup Arist</a>
+                        <a class="nav-mblink nav-link" href="../html/listservice.html">Day Spa</a>
+                    </div>
+                    <div class="logout px-2">
+                        <a class="nav-mblink nav-link " onclick="clickBtndoitac()">Đối tác</a>
+                        <a class="nav-mblink nav-link " href="../html/login.html">Đăng xuất</a>
+                    </div>
+
+                </div>
+
+
+
+
+            </nav>
+            <div class=" bottom-section px-3 ">
+                <nav class="nav row justify-content-between ">
+                    <a class="nav-link" href="../html/listservice.html">Hair Salon</a>
+                    <a class="nav-link" href="../html/listservice.html">Babershop</a>
+                    <a class="nav-link" href="../html/listservice.html">Nail Salon</a>
+                    <a class="nav-link" href="../html/listservice.html">Beauty Salon</a>
+                    <a class="nav-link" href="../html/listservice.html">Massage</a>
+                    <a class="nav-link" href="../html/listservice.html">Makeup Arist</a>
+                    <a class="nav-link" href="../html/listservice.html">Day Spa</a>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" id="ddMenu" data-toggle="dropdown">
+                                More
+                            </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="./listservice.html">Dưỡng Da</a>
+                            <!--Vân vân-->
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+        </div>
+        <div id="navhide" class="navbar fixed-top" style="background: #111; z-index: 2;" hidden>
+            <div class=" container px-1">
+                <div class=" col-lg-1 col-sm-1 navbar-brand logo">
+                    <a href="./index.html"><img src="../source/img/logo.png" style="width: 60px;"></a>
+                </div>
+                <div class="nav nav-pc">
+                    <div id="form-search-1" class="input-group form-inline col-lg-5 col-sm-7">
+                        <input id="howto-2" type="text" class=" form-control " placeholder=" Bạn muốn tìm kiếm gì?" data-toggle="modal" data-target="#popup-howto">
+                        <!-- The Service -->
+                        <div class="modal fade" id="popup-howto">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <input id="model-input-howto" type="text" class="popup-howto form-control" placeholder="Bạn tìm dịch vụ gì?">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div class="service">
+                                            <h5 class="modal-title">Dịch vụ phổ biến</h5>
+                                            <br>
+                                            <!--Lấy dữ liệu từ SQL nên hiệu chỉnh sau-->
+                                            <div class="group-service">
+                                                <label> 
+                                                <input type="checkbox"  name="service" class="service"  style="display: none;">
+                                                <span class="btn btn-service" for="">Cắt Tóc</span>
+                                            </label>
+                                                <label> 
+                                                <input type="checkbox" name="service" class="service" style="display: none;">
+                                                <span class="btn btn-service">Làm Nail</span>
+                                            </label>
+                                                <label> 
+                                                <input type="checkbox" name="service" class="service" style="display: none;">
+                                                <span class="btn btn-service">Duỗi Tóc</span>
+                                            </label>
+                                                <label> 
+                                                <input type="checkbox" name="service" class="service" style="display: none;">
+                                                <span class="btn btn-service">Uốn Tóc</span>
+                                            </label>
+                                                <!--có thể thêm-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" id="btn-search" onclick="searchHowto()" data-dismiss="modal">Tìm Kiếm</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <input id="location-2" type="text" class="form-control " placeholder="Địa điểm " data-toggle="modal" data-target="#popup-location">
+                        <!-- The Location -->
+                        <div class="modal fade" id="popup-location">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <input id="model-input-howto" type="text" class="popup-howto form-control" placeholder="Địa điểm ?">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div class="service">
+                                            <h5 class="modal-title">Vị trí</h5>
+
+                                            <!--Lấy dữ liệu từ SQL nên hiệu chỉnh sau-->
+                                            <div class="row justify-content-center">
+                                                <select name="calc_shipping_provinces" required="" class="col-sm-4 btn" id="locations-choose">
+                                            <option value="">Tỉnh / Thành phố</option>
+                                          </select>
+                                                <select name="calc_shipping_district" required="" class="col-sm-4 btn" id="locations-choose">
+                                            <option value="">Quận / Huyện</option>
+                                          </select>
+                                                <input class="billing_address_1" name="" type="hidden" value="">
+                                                <input class="billing_address_2" name="" type="hidden" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" id="btn-search" onclick="searchLocation()" data-dismiss="modal">Tìm Kiếm</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" id="ddMenu" data-toggle="dropdown"><span><img style="width: 25;height: 25px;" src="../source/img/emojione_flag-for-vietnam.png" alt=""></span>
+                           Việt Nam
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Việt Nam</a>
+                            <a class="dropdown-item" href="#">USA</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" id="ddMenu" data-toggle="dropdown"><span><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 18 18">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                          </svg></span>
+                           Profile
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Trang cá nhân </a>
+                            <a class="dropdown-item" href="#">Lịch book</a>
+                            <a class="dropdown-item" href="#">Thông báo</a>
+                            <a class="dropdown-item" href="#">Đăng xuất</a>
+                        </div>
+                    </div>
+                    <a class="btn btn-business" onclick="clickBtndoitac()">Đối tác</a>
+                </div>
+                <label for="nav-check" class="nav-mobile-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-list" viewBox="0 0 15 15">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                      </svg>                      
+                </label>
+
+
+            </div>
+        </div>
+    </header>
+    <div class="container  mt-5">
+        <div class="recommend">
+            <h1 class="h1Re">HAIR SALON Ở VIỆT NAM(2021)</h1>
+            <div class="owl-carousel owl-theme" id="carousel1">
+                <div class="ml-2 mr-2">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx ">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <div class="Getreview d-inline">(293)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <div class="Getreview d-inline">(223)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <div class="Getreview d-inline">(150)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <div class="Getreview d-inline">(120)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <div class="Getreview d-inline">(100)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <div class="Getreview d-inline">(80)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star"></span>
+                                    <div class="Getreview d-inline">(70)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="ml-2 mr-2 ">
+                    <a class="linkShoptoDetail" href="../html/detailShop.html">
+                        <div class="card">
+                            <img src="../source/img/8.jpg" alt="" class="card-img-top">
+                            <div class="card-body text-left">
+                                <h5 class="card-title text-left SZ">TuanBarber</h5>
+                                <h5 class="text-left ratezx">Rate: <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked ml-2"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked "></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
+                                    <span style="font-size:20px;cursor:pointer;" class="fa fa-star"></span>
+                                    <div class="Getreview d-inline">(50)</div>
+                                </h5>
+                                <div class="location">
+                                    34 Lũy Bán Bích,Tân Phú,TP HCM
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="hr1 px-0"></div>
+        </div>
+        <div class="row mb-3" style="text-align:left">
+            <div class="col-md-3">
+                <div title="popup-sort">
+                    <button id="btn-popup-sort" type="button" class="btn" data-toggle="modal" data-target="#popup-sort">
+                      Đề xuất bởi BookStylist
+                    </button>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="popup-sort">
+                        <div class="modal-dialog modal-sm ">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header" style="background: #222222; color: #ffffff;">
+                                    <h5 class="modal-title">Sắp xếp kết quả theo</h5>
+                                    <button type="button" class="close" data-dismiss="modal" style="color: #fff;">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body" style="text-align: center;">
+                                    <label class="center">
+                                    <input type="radio" name="radiosort" class="radiosort" style="display:none;">
+                                    <span class="btn btn-sort">Đề xuất bởi BoolStyle</span>
+                                </label>
+                                    <label>
+                                    <input type="radio" name="radiosort" class="radiosort" style="display:none;">
+                                    <span class="btn btn-sort">Đánh giá cao</span>
+                                </label>
+                                    <input type="hidden" class="sortby" value="">
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button id="btn-search" onclick="sort()" type="button" class="btn" data-dismiss="modal">Đồng ý</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div title="popup-filter">
+                    <button id="btn-popup-filter" type="button" class="btn" data-toggle="modal" data-target="#popup-filters">
+                  Filters
+                </button>
+
+                    <!-- Popup Filter -->
+                    <div class="modal fade" id="popup-filters">
+                        <div class="modal-dialog modal-lg ">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header" style="background: #222222; color: #ffffff;">
+                                    <h6 class="modal-title">Lọc</h6>
+                                    <button type="button" class="close" data-dismiss="modal" style="color:#ffffff">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="service container">
+                                        <h5 class="modal-title">DỊCH VỤ</h5>
+                                        <br>
+                                        <!--Lấy dữ liệu từ SQL nên hiệu chỉnh sau-->
+                                        <div class="group-service">
+                                            <label> 
+                                            <input type="checkbox"  name="service" class="service"  style="display: none;">
+                                            <span class="btn btn-service" for="">Cắt Tóc</span>
+                                        </label>
+                                            <label> 
+                                            <input type="checkbox" name="service" class="service" style="display: none;">
+                                            <span class="btn btn-service">Làm Nail</span>
+                                        </label>
+                                            <label> 
+                                            <input type="checkbox" name="service" class="service" style="display: none;">
+                                            <span class="btn btn-service">Duỗi Tóc</span>
+                                        </label>
+                                            <label> 
+                                            <input type="checkbox" name="service" class="service" style="display: none;">
+                                            <span class="btn btn-service">Uốn Tóc</span>
+                                        </label>
+                                            <!--có thể thêm-->
+
+                                        </div>
+                                        <br>
+                                        <hr>
+
+                                        <h5 class="modal-title">VỊ TRÍ</h5>
+                                        <br>
+                                        <div class="row justify-content-center">
+                                            <select name="calc_shipping_provinces" required="" class="col-sm-4 btn" id="locations-choose">
+                                        <option value="">Tỉnh / Thành phố</option>
+                                      </select>
+                                            <select name="calc_shipping_district" required="" class="col-sm-4 btn" id="locations-choose">
+                                        <option value="">Quận / Huyện</option>
+                                      </select>
+                                            <input class="billing_address_1" name="" type="hidden" value="">
+                                            <input class="billing_address_2" name="" type="hidden" value="">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" id="btn-search" onclick="searchFilters()" data-dismiss="modal">Tìm Kiếm</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+
+        <div class="row mb-3">
+
+
+            <div class="col-md-4 col-12">
+                <a class="linkShoptoDetail" href="../html/detailShop.html">
+                    <div class="item-list">
+                        <img src="../source/img/8.jpg" alt="" class="img-fluid px-2">
+                        <div class="ratingList">
+                            <div class="ratingPointList">4.9</div>
+                            <div class="reviewCountList">209 đánh giá</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-8 col-12 infoListz">
+                <a class="nameShopList" href="../html/detailShop.html">Hair Salon</a>
+                <div class="locationList">34 Lũy Bán bích, Tân phú, Tp hcm</div>
+                <div class="hr"></div>
+                <div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right">
+                            <!-- Popup Book -->
+                            <div title="popup-book">
+                                <!-- Button to Open the Modal -->
+                                <button class=" btn-book" data-toggle="modal" data-target="#popup-book">Book</button>
+
+                                <!-- The Modal -->
+                                <div class="modal fade" id="popup-book">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header" style="background: #222222; color: #ffffff;">
+                                                <h4 class="modal-title">Đặt lịch</h4>
+                                                <button type="button" class="close" data-dismiss="modal" style="color:#fff;">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <div class="group-day" style="text-align: center;">
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Thứ Hai</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Thứ Ba</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Thứ Tư</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Thứ Năm</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Thứ Sáu</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Thứ Bảy</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="radioday" class="radioday" style="display:none;">
+                                                        <span class="btn btn-day">Chủ Nhật</span>
+                                                    </label>
+                                                </div>
+                                                <hr>
+                                                <p id="full-day">Ngày - Tháng - Năm</p>
+                                                <hr>
+                                                <div class="row" style="text-align: center;">
+                                                    <div class="col-4">Sáng</div>
+                                                    <div class="col-4">Trưa</div>
+                                                    <div class="col-4">Chiều</div>
+                                                </div>
+                                                <hr>
+                                                <div class="group-time row" style="text-align: center;">
+                                                    <div id="morning" class="col-4">
+                                                        <!--tự hiện-->
+                                                    </div>
+                                                    <div id="afternoon" class="col-4">
+                                                        <!--tự hiện-->
+                                                    </div>
+                                                    <div id="evening" class="col-4">
+                                                        <!--tự hiện-->
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button id="btn-book" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book" data-toggle="modal" data-target="#popup-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row mb-3">
+
+
+            <div class="col-md-4 col-12">
+                <a class="linkShoptoDetail" href="../html/detailShop.html">
+                    <div class="item-list">
+                        <img src="../source/img/8.jpg" alt="" class="img-fluid px-2">
+                        <div class="ratingList">
+                            <div class="ratingPointList">4.9</div>
+                            <div class="reviewCountList">209 đánh giá</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-8 col-12 infoListz">
+                <a class="nameShopList" href="../html/detailShop.html">Hair Salon</a>
+                <div class="locationList">34 Lũy Bán bích, Tân phú, Tp hcm</div>
+                <div class="hr"></div>
+                <div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row mb-3">
+
+
+            <div class="col-md-4 col-12">
+                <a class="linkShoptoDetail" href="../html/detailShop.html">
+                    <div class="item-list">
+                        <img src="../source/img/8.jpg" alt="" class="img-fluid px-2">
+                        <div class="ratingList">
+                            <div class="ratingPointList">4.9</div>
+                            <div class="reviewCountList">209 đánh giá</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-8 col-12 infoListz">
+                <a class="nameShopList" href="../html/detailShop.html">Hair Salon</a>
+                <div class="locationList">34 Lũy Bán bích, Tân phú, Tp hcm</div>
+                <div class="hr"></div>
+                <div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row mb-3">
+
+
+            <div class="col-md-4 col-12">
+                <a class="linkShoptoDetail" href="../html/detailShop.html">
+                    <div class="item-list">
+                        <img src="../source/img/8.jpg" alt="" class="img-fluid px-2">
+                        <div class="ratingList">
+                            <div class="ratingPointList">4.9</div>
+                            <div class="reviewCountList">209 đánh giá</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-8 col-12 infoListz">
+                <a class="nameShopList" href="../html/detailShop.html">Hair Salon</a>
+                <div class="locationList">34 Lũy Bán bích, Tân phú, Tp hcm</div>
+                <div class="hr"></div>
+                <div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row mb-3">
+
+
+            <div class="col-md-4 col-12">
+                <a class="linkShoptoDetail" href="../html/detailShop.html">
+                    <div class="item-list">
+                        <img src="../source/img/8.jpg" alt="" class="img-fluid px-2">
+                        <div class="ratingList">
+                            <div class="ratingPointList">4.9</div>
+                            <div class="reviewCountList">209 đánh giá</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-8 col-12 infoListz">
+                <a class="nameShopList" href="../html/detailShop.html">Hair Salon</a>
+                <div class="locationList">34 Lũy Bán bích, Tân phú, Tp hcm</div>
+                <div class="hr"></div>
+                <div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mb-3">
+
+
+            <div class="col-md-4 col-12">
+                <a class="linkShoptoDetail" href="../html/detailShop.html">
+                    <div class="item-list">
+                        <img src="../source/img/8.jpg" alt="" class="img-fluid px-2">
+                        <div class="ratingList">
+                            <div class="ratingPointList">4.9</div>
+                            <div class="reviewCountList">209 đánh giá</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-8 col-12 infoListz">
+                <a class="nameShopList" href="../html/detailShop.html">Hair Salon</a>
+                <div class="locationList">34 Lũy Bán bích, Tân phú, Tp hcm</div>
+                <div class="hr"></div>
+                <div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                    <div class="hr"></div>
+                    <div class="row mt-2">
+                        <div class="col-md-8 col-5">
+                            <div>Nhuộm tóc</div>
+                        </div>
+                        <div class="col-md-2 col-4 float-right">35.000đ</div>
+                        <div class="col-md-2 col-3 float-right"><button class=" btn-book">Book</button></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="listshop-footer">
+            <div class="row">
+                <div class="col-md text-center">
+                    <div class="pagination_rounded">
+                        <ul>
+                            <li>
+                                <a href="#" class="prev text-right"> <i class="fa fa-angle-left" aria-hidden="true"></i></a>
+                            </li>
+                            <li><a href="#">1</a> </li>
+                            <li class="hidden-xs"><a href="#">2</a> </li>
+                            <li class="hidden-xs"><a href="#">3</a> </li>
+                            <li class="hidden-xs"><a href="#">4</a> </li>
+                            <li class="hidden-xs"><a href="#">5</a> </li>
+                            <li class="visible-xs"><a href="#">...</a> </li>
+                            <li><a href="#" class="next text-center"><i class="fa fa-angle-right" aria-hidden="true"></i></a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <h1 class="h1Re" style="margin-bottom: 20px;">Dịch vụ phổ biến</h1>
+            <div class="row text-center">
+                <div class="col-md categoriR">
+                    <a class="btn btn-outline-secondary btn-lg">Cắt tóc &rarr;</a>
+                </div>
+                <div class="col-md categoriR">
+                    <a class="btn btn-outline-secondary btn-lg">Nhuộm tóc &rarr;</a>
+                </div>
+                <div class="col-md categoriR">
+                    <a class="btn btn-outline-secondary btn-lg">Uốn tóc &rarr;</a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md ">
+                    <a class="btn btn-outline-secondary btn-lg">Cạo râu &rarr;</a>
+                </div>
+                <div class="col-md">
+                    <a class="btn btn-outline-secondary btn-lg">Dưỡng da &rarr;</a>
+                </div>
+                <div class="col-md">
+                    <a class="btn btn-outline-secondary btn-lg">Massage &rarr;</a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md ">
+                    <a class="btn btn-outline-secondary btn-lg">Cạo râu &rarr;</a>
+                </div>
+                <div class="col-md">
+                    <a class="btn btn-outline-secondary btn-lg">Dưỡng da &rarr;</a>
+                </div>
+                <div class="col-md">
+                    <a class="btn btn-outline-secondary btn-lg">Massage &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+       
+
+    </div>
+    <footer>
+        <div class="container">
+            <!--Bắt Đầu Nội Dung Giới Thiệu-->
+            <div class="noi-dung about">
+                <h2>Về Chúng Tôi</h2>
+                <p>Lorem ipsumdolor sit...</p>
+                <ul class="social-icon">
+                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Giới Thiệu-->
+            <!--Bắt Đầu Nội Dung Đường Dẫn-->
+            <div class="noi-dung links">
+                <h2>Đường Dẫn</h2>
+                <ul>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Về Chúng Tôi</a></li>
+                    <li><a href="#">Thông Tin Liên Lạc</a></li>
+                    <li><a href="#">Dịch Vụ</a></li>
+                    <li><a href="#">Điều Kiện Chính Sách</a></li>
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Đường Dẫn-->
+            <!--Bắt Đâu Nội Dung Liên Hệ-->
+            <div class="noi-dung contact">
+                <h2>Thông Tin Liên Hệ</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa fa-map-marker"></i></span>
+                        <span>Đường Số 1<br />
+                            Quận 1, Thành Phố Hồ Chí Minh<br />
+                            Việt Nam</span>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-phone"></i></span>
+                        <p><a href="#">+84 123 456 789</a>
+                            <br />
+                            <a href="#">+84 987 654 321</a></p>
+                    </li>
+                    <li>
+                        <span><i class="fa fa-envelope"></i></span>
+                        <p><a href="#">diachiemail@gmail.com</a></p>
+                    </li>
+
+                </ul>
+            </div>
+            <!--Kết Thúc Nội Dung Liên Hệ-->
+        </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/Detail2.script.js"></script>
+    <script src="../js/nav-sevice-page.js">
+    </script>
+    <script src="../js/popup.js"></script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+
+            items: 4,
+            dots: false,
+            loop: true,
+            nav: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+
+                },
+                600: {
+                    items: 4
+                }
+
+            }
+
+
+        });
+    </script>
+</body>
+
+</html>

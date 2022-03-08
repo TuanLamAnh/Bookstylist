@@ -1,0 +1,114 @@
+.infor-account{
+    background-color: #ff401aa1     ;
+}
+.head-infor-account{
+    margin: 35px 0px ;
+    margin-top: 40px;
+
+}
+.block-infor{
+    position: relative;
+    margin-right: 6%;
+    background-color: rgba(146, 142, 139, 0.089);
+    padding: 30px 20px;
+    border-radius: 10px;
+}
+.row-infor{
+    margin-bottom: 10px;
+}
+.lable{
+    margin-top: 7px;
+}
+.gender{
+
+    margin-left:  20px;
+    margin-bottom: 15px;
+}
+.radio{
+    width: 25px !important;
+    height: 25px !important;
+   
+    
+}
+
+.change-password{
+
+    margin-top: 8px;
+    color: #FF421A;
+    border: none;
+    margin-left: 10px;
+
+    
+}
+.change-password:hover{
+    cursor: pointer;
+    color: #b9351a;
+}
+.btn-update{
+    
+    background-color: #FF421A;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    padding: 10px;
+   
+    
+
+}
+.icon-facebook{
+  color: #0d6efd !important;
+}
+.text-link{
+    color:rgb(14, 88, 185);
+    
+}
+.text-link:hover{
+    color: rgb(23, 32, 59);
+    cursor: pointer;
+}
+.text-link-cancle{
+    color: #ff2a00 ;
+}
+.text-link-cancle:hover{
+    color:#aa5646 ;
+    cursor: pointer;
+
+}
+.icon-google{
+    color: rgb(189, 20, 20);
+}
+.edit:hover{
+    cursor: pointer;
+    color: #FF421A;
+    
+}
+@media(max-width:991px){
+    .block-infor{
+        position: relative;
+        left: 3%;
+        
+    }
+    .forrm{
+        width: 150% !important;
+        margin-left: 10px;
+    }
+    .lable{
+        width: 200%;
+    
+    }
+    .gender{
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+    .radio{
+        width: 22px !important;
+        height: 22px !important;   
+    }
+    .formmk{
+        margin-left: 10px;
+        width: 110% !important;
+    }
+    .change-password{
+        margin-left:25px
+    }
+}

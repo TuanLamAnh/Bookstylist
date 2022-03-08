@@ -1,0 +1,124 @@
+h1 {
+    color: #ff421a !important;
+    font-size: 30px !important;
+}
+
+.watchmore {
+    color: #ff421a;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.watchmore:hover {
+    color: #ffa492;
+}
+
+.heading1:hover {
+    color: #fc9f8d;
+}
+
+.promotionimg {
+    opacity: 0.8;
+    max-width: 100%;
+    position: relative !important;
+    top: -20%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.promotionimg:hover {
+    opacity: 1;
+    border: 1px solid;
+    border-color: #ff421a;
+}
+
+.promotionText {
+    color: #ffffff;
+    font-weight: bold;
+    position: relative !important;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.promotionText:hover {
+    color: #ff421a;
+}
+
+.btn-full {
+    background-color: #ff421a;
+    color: #fff;
+    border-radius: 10px;
+    width: max-content;
+}
+
+.btn-full:hover {
+    background-color: #fd826a;
+}
+
+.btn-outline {
+    border-radius: 10px;
+    border: 2px solid #ff421a;
+    color: #ff421a;
+    width: max-content;
+}
+
+.btn-outline:hover {
+    background-color: #ff421a;
+    color: #ffffff !important;
+    border-color: #ff421a;
+}
+
+.wrapper {
+    margin: 10px 0px;
+}
+
+.inspiredbg {
+    background-color: rgb(235, 231, 231);
+    border-radius: 10px;
+    margin: 0px 10%;
+    height: 450px;
+}
+
+.imgTopic {
+    width: 50% !important;
+    align-self: center;
+    margin: 10px 0px;
+}
+
+.carouselinspired {
+    position: relative;
+    top: -300px;
+}
+
+.infoTopic {
+    width: 90%;
+    border-radius: 15px !important;
+    box-shadow: 3px 3px #9c9c9c;
+    cursor: pointer;
+    align-self: center;
+}
+
+.infoTopic:hover {
+    width: 100%;
+}
+
+.btn-outline-secondary {
+    border: 3px solid !important;
+    width: 100%;
+    border-color: #ff421a !important;
+    border-radius: 15px !important;
+    margin-bottom: 15px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #ff421a;
+}
+
+@media screen and (max-width: 700px) {
+    .btn-outline {
+        margin-bottom: 30px;
+    }
+}

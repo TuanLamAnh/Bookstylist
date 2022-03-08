@@ -1,0 +1,13 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.term {
+    background-color: #ff401aa1;
+}
+
+.policiesHeader {
+    margin: 40px 0;
+}

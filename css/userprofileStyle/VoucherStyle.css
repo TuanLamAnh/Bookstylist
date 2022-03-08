@@ -1,0 +1,36 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.voucherHeader {
+    margin: 35px 0px
+}
+
+.voucher {
+    background-color: #ff401aa1;
+}
+
+.alls {
+    font-size: 20px !important;
+}
+
+.vouchers {
+    margin: 20px 0px;
+    font-family: 20px;
+}
+
+.nameShopsss {
+    font-weight: 400;
+}
+
+.voucherCode {
+    background-color: #ff401aa1;
+    border: 1px solid #ff401aa1;
+    border-radius: 10px;
+}
+
+.detailzz {
+    margin-top: 25px;
+}

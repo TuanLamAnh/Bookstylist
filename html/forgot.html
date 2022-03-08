@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quên mật khẩu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/Loginstyle.css">
+</head>
+
+<body class="my-login-page">
+    <section class="">
+        <div class="container ">
+            <div class="row justify-content-md-center align-items-center ">
+                <div class="card-wrapper">
+                    <div class="brand">
+                        <img src="../source/img/logo.png" alt="logo">
+                    </div>
+                    <div class="card fat">
+                        <div class="card-body">
+                            <h4 class="card-title">Quên mật khẩu</h4>
+                            <div class="line1"></div>
+                            <form method="POST" class="my-login-validation" novalidate="">
+                                <div class="form-group mb-3 mt-3">
+                                    <label for="email">Vui lòng nhập email </label>
+                                    <input id="email" type="email" class="form-control" name="email" value="" required autofocus placeholder="Nhập Email">
+                                    <div class="invalid-feedback">
+                                        Vui lòng nhập đúng định dạng gmail
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group m-0 pt-2">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <!-- <a href="login.html"><button type="submit" class="btn btn-block  szx btnforgot">
+                                            Hủy
+                                        </button></a> -->
+                                            <a href="login.html" class="Loginnowa">
+                                                <div class="btn btn-block  szx btnforgot">Hủy</div>
+                                            </a>
+                                        </div>
+                                        <div class="col-6"><button type="submit" class="btn  btn-block  szz btnforgot">
+                                            Tìm kiếm
+                                        </button></div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer-login">
+                        Copyright &copy; 2021 &mdash; BookStylist
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="../js/mylogin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hisbook {
+    background-color: #ff401aa1;
+}
+
+.history-booking__title {
+    /* line-height: 29px; */
+    margin: 35px 0px
+}
+
+.history-booking--success {
+    height: 25vh;
+    background: #CBDCCA;
+    border-radius: 28px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    margin: 10vh 5% !important;
+}
+
+.history-booking--success__info {
+    border-right: 1px solid #111;
+    height: 25vh;
+}
+
+.history-booking--success__info--btn {
+    border: 1px solid #1D3509;
+    box-sizing: border-box;
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 15px;
+    color: #FAFAFA;
+}
+
+.history-booking--success__info--main-text {
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+    height: 12vh;
+    font-size: 17px;
+    color: #000000;
+}
+
+.history-booking--success__info--main-text p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
+    font-weight: bolder;
+}
+
+.history-booking__time {
+    height: 25vh;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.history-booking--cancel {
+    background: #FF9F9F;
+    border-radius: 28px;
+    height: 25vh;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 23px;
+    margin-left: 5% !important;
+}
+
+.history-booking--cancel__info {
+    border-right: 1px solid #111;
+    height: 25vh;
+}
+
+.sssas {
+    background-color: #f2e9e4;
+}
+
+.history-booking--cancel__info--btn {
+    border-radius: 20px;
+}

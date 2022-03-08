@@ -1,0 +1,203 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#btn-popup-filter {
+    background-color: #FF421A;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#btn-popup-filter:hover {
+    background-color: #ff8d76;
+}
+
+#btn-popup-filter:focus {
+    box-shadow: none !important;
+}
+
+#btn-popup-sort {
+    background-color: #FF421A;
+    color: #fff;
+    border-radius: 50px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#btn-popup-sort:hover {
+    background-color: #ff8d76;
+}
+
+#btn-popup-sort:focus {
+    box-shadow: none !important;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.service {
+    display: block;
+}
+
+.btn-service {
+    border-radius: 50px;
+    margin: 0 5px;
+    color: #000000;
+    border: 1px solid rgb(130, 130, 130);
+}
+
+.btn-service:hover {
+    background-color: #FF421A !important;
+    border: 1px solid #FF421A !important;
+    color: #fff;
+}
+
+input.service:checked+span.btn-service {
+    background-color: #FF421A !important;
+    color: #fff;
+    border: 1px solid #FF421A !important;
+    box-shadow: none !important;
+}
+
+#btn-search {
+    background-color: #FF421A;
+    color: #fff;
+    border-radius: 50px;
+    margin: 0px auto !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#btn-search:focus {
+    box-shadow: 2px 2px 0px #ff8d76 !important;
+}
+
+#popup-filters {
+    box-shadow: none !important;
+}
+
+#locations-choose {
+    padding: auto;
+    margin: 0 10px;
+    border-radius: 25px;
+    border: 1px solid rgb(130, 130, 130);
+}
+
+#locations-choose:focus {
+    border: 2px solid #ff8d76 !important;
+    box-shadow: none !important;
+}
+
+.btn-sort {
+    border: 1px solid #FF421A;
+    color: #FF421A;
+    border-radius: 50px;
+    margin: 10px auto;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-sort:hover {
+    background-color: #FF421A;
+    border: 1px solid #FF421A !important;
+    color: #fff;
+}
+
+input.radiosort:checked+span.btn-sort {
+    background-color: #FF421A;
+    color: #fff;
+    box-shadow: none !important;
+    border: 1px solid #FF421A !important;
+}
+
+.popup-howto {
+    border: none !important;
+}
+
+input.popup-howto:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#popup-howto {
+    color: #000 !important;
+}
+
+#popup-location {
+    color: #000 !important;
+}
+
+#btn-popup-book {
+    background-color: #FF421A;
+    color: #fff;
+    border-radius: 50px;
+    margin: 0px auto !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#btn-popup-book:focus {
+    box-shadow: 2px 2px 0px #ff8d76 !important;
+}
+
+.btn-day {
+    border-radius: 50px !important;
+}
+
+.btn-day:hover {
+    background-color: #ffd6cc !important;
+    color: #FF421A !important;
+    border-radius: 50px !important;
+    border: 1px solid #FF421A !important;
+}
+
+input.radioday:checked+span.btn-day {
+    background-color: #ffd6cc !important;
+    color: #FF421A !important;
+    border-radius: 50px !important;
+    border: 1px solid #FF421A !important;
+}
+
+#full-day {
+    text-align: center;
+    font-size: 17px;
+    color: rgb(94, 94, 94)
+}
+
+.btn-time {
+    border-radius: 50px !important;
+    border: 1px solid rgb(95, 95, 95)!important;
+    width: 80px !important;
+}
+
+.btn-time:hover {
+    background-color: #ffd6cc !important;
+    color: #FF421A !important;
+    border-radius: 50px !important;
+    border: 1px solid #FF421A !important;
+}
+
+input.radiotime:checked+span.btn-time {
+    background-color: #ffd6cc !important;
+    color: #FF421A !important;
+    border-radius: 50px !important;
+    border: 1px solid #FF421A !important;
+}
+
+input.radiotime:disabled+span.btn-time {
+    background-color: rgb(170, 170, 170)!important;
+    color: #fff!important;
+}
+
+input.radiotime:disabled+span.btn-time:hover {
+    background-color: rgb(172, 172, 172)!important;
+    border-radius: 50px !important;
+    border: 1px solid #fff!important;
+    width: 80px !important;
+    color: rgb(255, 255, 255) !important;
+}

@@ -1,0 +1,60 @@
+.notification{
+    background-color: #ff401aa1     ;
+}
+.head-infor-account{
+    margin: 35px 0px ;
+    margin-top: 40px;
+}
+.block-notification {
+    position: relative;
+    margin-right: 6%;
+    background-color: rgba(207, 205, 203, 0.089);
+    padding: 30px 20px;
+    border-radius: 10px;
+}
+.icon-more{
+    margin-left: 24px
+}
+.hd{
+    margin-bottom: 20px;
+}
+.list-noti{
+    margin-bottom: 20px;
+}
+.time{
+    color:#FF421A;
+    font-weight: bold;
+    font-size: 14px;
+}
+.seen{
+    color: rgb(109, 107, 107) !important;
+}
+.seen span{
+    font-size: 14px;
+
+}
+.seeall:hover{
+    color: #b83217;
+    cursor: pointer;
+}
+.xoa:hover{
+    cursor: pointer;
+    color: #9b220a;
+}
+#delete:checked ~ .list1{
+ 
+   display: none;
+}
+#delete{
+    display: none;
+}
+
+@media(max-width: 991px){
+    .block-notification{
+        position: relative;     
+        left: 3%;  
+    }
+   
+}
+
+

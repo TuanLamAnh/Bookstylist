@@ -1,0 +1,82 @@
+.fvr-shop{
+    background-color: #ff401aa1     ;
+}
+.head-infor-account{
+    margin: 40px 0px ;
+}
+.fvr-image{
+    background-image: url(../../source/img/fvr1.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 350px;
+    height: 230px ;
+    border-radius: 5px;
+    position:relative;
+    margin-bottom: 10px;
+    
+
+}
+.fvr-image-1{
+    background-image: url(../../source/img/fvr2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 350px;
+    height: 230px ;
+    border-radius: 5px;
+    position:relative;
+    margin-bottom: 10px;
+    
+
+}
+.fvr-image-2{
+    background-image: url(../../source/img/fvr3.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 350px;
+    height: 230px ;
+    border-radius: 5px;
+    position:relative;
+    margin-bottom: 10px;
+    
+
+}
+
+.review{
+    color: #fff;
+    position:absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    right: 0;
+    border-bottom-left-radius:  5px;
+    padding: 5px;
+    
+}
+.rate{
+    font-size: 20px ;
+    font-weight: bolder;
+}
+.unlike{
+    color: #FF421A;
+    border-radius: 20px;
+    border: #FF421A 1px solid;
+    padding:5px;
+
+    
+}
+.unlike:hover{
+    background-color: #FF421A;
+    color: #fff;
+    cursor: pointer;
+}
+@media(max-width: 991px){
+    .list-fvr{
+        position: relative;     
+        left: 3%;  
+    }
+    .unlike{
+        margin-bottom: 10px;
+    }
+   
+}
+
+

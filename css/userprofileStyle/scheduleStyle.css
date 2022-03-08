@@ -1,0 +1,64 @@
+.lich {
+    background-color: #ff401aa1;
+}
+
+.head-infor-account {
+    margin: 35px 0px;
+    margin-top: 40px;
+}
+
+.appointment-schedule {
+    font-size: 15px;
+    line-height: 23px;
+    color: #000000;
+    
+}
+
+.appointment-schedule__title {
+    margin: 3vh;
+    font-size: 25px;
+    line-height: 29px;
+}
+
+
+.appointment-schedule .btn-danger {
+    background: #FF421A;
+    border-radius: 50px;
+    color: #FFFFFF;
+    margin: 3vh 30%;
+}
+
+.appointment-schedule div img {
+    border-radius: 29px;
+}
+
+.appointment-schedule__name-services {
+    margin: 3vh 1vh 0;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.appointment-schedule__name-user {
+    margin: 1vh 1vh 0;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.appointment-schedule__btn button {
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 50px;
+    margin: 2vh 10%;
+}
+
+.changeSce{
+    border: 1px solid #FF421A !important;
+    background-color: white;
+}
+
+.changeSce:hover{
+    background-color: #FF421A;
+    color: white;
+}
